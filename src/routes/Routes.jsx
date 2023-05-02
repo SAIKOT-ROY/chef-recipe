@@ -3,6 +3,7 @@ import LoginLayout from "../LoginLayout/LoginLayout/LoginLayout";
 import Login from "../LoginLayout/Login/Login";
 import Register from "../LoginLayout/Register/Register";
 import Banner from "../banner/Banner";
+import Blogs from "../Pages/Blogs/Blogs";
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path: 'blog',
+        element: <Blogs></Blogs>
       }
     ]
   },
