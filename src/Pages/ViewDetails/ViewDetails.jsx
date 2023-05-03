@@ -1,5 +1,8 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { BeakerIcon, StarIcon } from '@heroicons/react/24/solid'
+
+
 
 const ViewDetails = () => {
   const { id } = useParams();
@@ -64,7 +67,7 @@ const ViewDetails = () => {
                 <li>{recipes[0].ingredients[4]}</li>
             </ul>
           </div>
-          <button className="btn btn-warning">Favourite</button>
+          <button className="btn btn-warning"><StarIcon className="w-4" /></button>
         </div>
         <div className="card w-96 bg-base-100 shadow-xl border border-white bg-slate-800 p-5">
           <figure className="mask mask-squircle">
