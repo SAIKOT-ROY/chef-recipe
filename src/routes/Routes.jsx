@@ -4,6 +4,8 @@ import Login from "../LoginLayout/Login/Login";
 import Register from "../LoginLayout/Register/Register";
 import Banner from "../banner/Banner";
 import Blogs from "../Pages/Blogs/Blogs";
+import Home from "../Home/Home";
+import ViewDetails from "../Pages/ViewDetails/ViewDetails";
 
 
 
@@ -14,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Banner></Banner>
+        element: <Home></Home>
       },
       {
         path: 'login',
@@ -23,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>
+      },
+      {
+        path: 'details/:id',
+        element: <ViewDetails></ViewDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
       },
       {
         path: 'blog',
