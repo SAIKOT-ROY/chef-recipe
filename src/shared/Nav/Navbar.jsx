@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const {logOut, user} = useContext(AuthContext)
+
+  const handleLogOut = () => {
+    logOut()
+     .then()
+     .catch(error => console.log(error))
+  }
+
   return (
     <div className="mb-28 border px-5 rounded-xl md:m-5">
       <div className="navbar bg-base-100">
@@ -10,9 +19,19 @@ const Navbar = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-4 dropdown">
           <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
           <Link to="/blog">Blog</Link>
+          {user && <p>user ase re</p>}
+
+          {user ? (
+            <button onClick={handleLogOut}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
         </div>
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
