@@ -11,16 +11,6 @@ const ChefsBio = ({ chef }) => {
           <div className="md:h-96 border">
             {/* <img loading="lazy" className="md:h-full" src={chef.image_url} alt="chef" /> */}
             <LazyLoadImage className="md:h-full" src={chef.image_url} effect="blur" />
-            {/* <LazyLoad
-              height={762}
-              width={400}
-              threshold={0.95}
-              onContentVisible={() => {
-                console.log("loaded!");
-              }}
-            >
-              <img src={chef.image_url} />
-            </LazyLoad> */}
           </div>
         </figure>
         <div className="card-body">

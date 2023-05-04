@@ -3,12 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const {logIn} = useContext(AuthContext);
-  const [error, setError] = useState(null)
+  const { logIn } = useContext(AuthContext);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname
-  console.log(from)
+  const from = location.state?.from?.pathname;
+  console.log(from);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -17,21 +17,19 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
-
     logIn(email, password)
-      .then(result => {
-        const loggedUser = result.user
+      .then((result) => {
+        const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
-      .catch(error => {
-        const errorMessage = error.message
+      .catch((error) => {
+        const errorMessage = error.message;
         console.log(errorMessage);
-        if(errorMessage){
-          setError('Wrong Password or Wrong Email')
+        if (errorMessage) {
+          setError("Wrong Password or Wrong Email");
         }
-      })
-    
+      });
   };
   return (
     <div
@@ -60,20 +58,21 @@ const Login = () => {
           <button className="btn">LogIn</button>
           <p className="text-red-800">{error}</p>
         </div>
-        <div className="flex flex-col gap-2 items-center">
-          <button className="btn w-36 
-              bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-sky-400 to-blue-800"
-          >
-            Google
-          </button>
-          <button
-            className="btn w-36
-               bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800"
-          >
-            Github
-          </button>
-        </div>
       </form>
+      <div className="flex flex-col gap-2 items-center">
+        <button
+          className="btn w-36 
+              bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-sky-400 to-blue-800"
+        >
+          Google
+        </button>
+        <button
+          className="btn w-36
+               bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800"
+        >
+          Github
+        </button>
+      </div>
       <p>
         Don't Have a account ?{" "}
         <Link
