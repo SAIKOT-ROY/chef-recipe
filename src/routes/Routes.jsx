@@ -7,6 +7,7 @@ import Blogs from "../Pages/Blogs/Blogs";
 import Home from "../Home/Home";
 import ViewDetails from "../Pages/ViewDetails/ViewDetails";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'details/:id',
-        element: <ViewDetails></ViewDetails>,
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/chef/${params.id}`)
       },
       {

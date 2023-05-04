@@ -1,6 +1,8 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { StarIcon } from '@heroicons/react/24/solid'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -8,6 +10,10 @@ const ViewDetails = () => {
   const { id } = useParams();
   const chefData = useLoaderData();
   const {recipes, rating, chef, bio, likes, years_of_experience, image_url} = chefData
+
+  const notify = () => {
+    toast('Added to Favourites')
+  }
 
   return (
     <div className="">
@@ -67,7 +73,7 @@ const ViewDetails = () => {
                 <li>{recipes[0].ingredients[4]}</li>
             </ul>
           </div>
-          <button className="btn btn-warning"><StarIcon className="w-4" /></button>
+          <button onClick={notify} className="btn btn-warning"><StarIcon className="w-4" /></button>
         </div>
         <div className="card w-96 bg-base-100 shadow-xl border border-white bg-slate-800 p-5">
           <figure className="mask mask-squircle">
@@ -75,7 +81,7 @@ const ViewDetails = () => {
               className="h-60"
               src={recipes[1].img}
               alt="Shoes"
-            />
+              />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
@@ -124,6 +130,7 @@ const ViewDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

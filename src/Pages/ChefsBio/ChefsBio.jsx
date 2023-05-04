@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ChefsBio = ({ chef }) => {
   return (
     <div>
-      <div className="card card-compact md:w-96 w-auto bg-base-100 shadow-xl bg-white">
+      <div className="card card-compact md:w-96 w-auto shadow-xl bg-white">
         <figure>
           <div className="md:h-96 border">
             <img className="md:h-full" src={chef.image_url} alt="Shoes" />

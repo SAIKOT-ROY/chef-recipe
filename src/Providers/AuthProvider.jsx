@@ -13,8 +13,8 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const photoUrl =  () => {
-
+    const updateProfile =  () => {
+        
     }
 
     const logIn = (email, password) => {
