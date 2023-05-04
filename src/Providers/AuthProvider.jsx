@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { createContext } from 'react';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import app from '../firbase/firbase.config';
 
-const AuthProvider = () => {
+export const AuthContext = createContext(null);
+
+const auth = getAuth(app)
+
+const AuthProvider = ({children}) => {
+
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const logIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const authInfo = {
+        createUser,
+        logIn
+    }
     return (
-        <div>
-            <h2>This auth</h2>
-        </div>
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
     );
 };
 

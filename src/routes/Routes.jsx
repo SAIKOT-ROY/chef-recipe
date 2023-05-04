@@ -6,6 +6,7 @@ import Banner from "../banner/Banner";
 import Blogs from "../Pages/Blogs/Blogs";
 import Home from "../Home/Home";
 import ViewDetails from "../Pages/ViewDetails/ViewDetails";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginLayout></LoginLayout>,
+    errorElement:<ErrorPage />,
     children: [
       {
         path: '/',

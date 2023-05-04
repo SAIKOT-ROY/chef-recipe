@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { BeakerIcon, StarIcon } from '@heroicons/react/24/solid'
+import { StarIcon } from '@heroicons/react/24/solid'
 
 
 
