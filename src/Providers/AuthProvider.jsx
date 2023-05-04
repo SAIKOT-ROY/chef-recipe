@@ -1,17 +1,26 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firbase/firbase.config';
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app)
-
+const provider = new GoogleAuthProvider();
+const gitProvider = new GithubAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null)
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const googleLogIn = () => {
+       return signInWithPopup(auth, provider)
+    }
+
+    const githubLogIn = () => {
+        return signInWithPopup(auth, provider)
     }
 
     const logIn = (email, password) => {
@@ -36,6 +45,8 @@ const AuthProvider = ({children}) => {
         createUser,
         logIn,
         logOut,
+        googleLogIn,
+        githubLogIn
     }
 
 

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const { logIn, googleLogIn, githubLogIn } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,8 +29,30 @@ const Login = () => {
         if (errorMessage) {
           setError("Wrong Password or Wrong Email");
         }
-      });
+      }); 
   };
+
+
+  const handleGoogle = () => {
+    googleLogIn()
+    .then(result => {
+      const user = result.user;
+      navigate(location.state?.from?.pathname)
+      console.log(user);
+    })
+    .catch(err => console.log(err))
+}
+
+
+const handleGithub = () => {
+    githubLogIn()
+    .then(result => {
+      const user = result.user
+      navigate(location.state?.from?.pathname)
+      console.log(user);
+    }) 
+    .catch(err => console.log(err))
+}
   return (
     <div
       className="md:w-1/3 w-3/4 text-center border
@@ -60,18 +82,19 @@ const Login = () => {
         </div>
       </form>
       <div className="flex flex-col gap-2 items-center">
-        <button
+       <div onClick={handleGoogle}>
+       <button
           className="btn w-36 
               bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-sky-400 to-blue-800"
         >
           Google
         </button>
-        <button
-          className="btn w-36
-               bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800"
-        >
+       </div>
+       <div onClick={handleGithub}>
+       <button className="btn w-36 bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
           Github
         </button>
+       </div>
       </div>
       <p>
         Don't Have a account ?{" "}
