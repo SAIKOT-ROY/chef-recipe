@@ -14,7 +14,7 @@ const Chefs = () => {
   return (
     <div>
       <h4 className="text-center text-5xl mb-10 font-serif">Chef section</h4>
-      <div className="grid md:grid-cols-3 md:w-3/4 md:mx-auto gap-y-10">
+      <div className="grid md:grid-cols-3 md:w-3/4 md:mx-auto gap-y-28">
         {chefsData.map((chef) => (
           <ChefsBio key={chef.id} chef={chef}></ChefsBio>
         ))}

@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/register">Register</Link>
           <Link to="/blog">Blog</Link>
-          {user && <p>user ase re</p>}
+          {user && <img className="w-9 h-9 rounded-full" src="https://i.ibb.co/rHM5mh0/Chef-Shota.jpg" />}
 
           {user ? (
             <button onClick={handleLogOut}>

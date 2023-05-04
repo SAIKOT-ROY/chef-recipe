@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ChefsBio = ({ chef }) => {
   return (
@@ -7,7 +9,18 @@ const ChefsBio = ({ chef }) => {
       <div className="card card-compact md:w-96 w-auto shadow-xl bg-white">
         <figure>
           <div className="md:h-96 border">
-            <img className="md:h-full" src={chef.image_url} alt="Shoes" />
+            {/* <img loading="lazy" className="md:h-full" src={chef.image_url} alt="chef" /> */}
+            <LazyLoadImage src={chef.image_url} effect="blur" />
+            {/* <LazyLoad
+              height={762}
+              width={400}
+              threshold={0.95}
+              onContentVisible={() => {
+                console.log("loaded!");
+              }}
+            >
+              <img src={chef.image_url} />
+            </LazyLoad> */}
           </div>
         </figure>
         <div className="card-body">

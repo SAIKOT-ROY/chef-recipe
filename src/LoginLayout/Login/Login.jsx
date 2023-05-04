@@ -61,8 +61,7 @@ const Login = () => {
           <p className="text-red-800">{error}</p>
         </div>
         <div className="flex flex-col gap-2 items-center">
-          <button
-            className="btn w-36 
+          <button className="btn w-36 
               bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-sky-400 to-blue-800"
           >
             Google

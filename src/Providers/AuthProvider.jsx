@@ -1,20 +1,17 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firbase/firbase.config';
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app)
 
+
 const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null)
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
-    }
-
-    const updateProfile =  () => {
-        
     }
 
     const logIn = (email, password) => {
@@ -29,7 +26,6 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
             setUser(loggedUser)
         })
-
         return () => {
             unsubscribe()
         }
@@ -39,7 +35,7 @@ const AuthProvider = ({children}) => {
         user,
         createUser,
         logIn,
-        logOut
+        logOut,
     }
 
 
