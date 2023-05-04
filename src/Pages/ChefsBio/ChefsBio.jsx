@@ -10,7 +10,7 @@ const ChefsBio = ({ chef }) => {
         <figure>
           <div className="md:h-96 border">
             {/* <img loading="lazy" className="md:h-full" src={chef.image_url} alt="chef" /> */}
-            <LazyLoadImage src={chef.image_url} effect="blur" />
+            <LazyLoadImage className="md:h-full" src={chef.image_url} effect="blur" />
             {/* <LazyLoad
               height={762}
               width={400}
