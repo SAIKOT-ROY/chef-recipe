@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
   const {logIn} = useContext(AuthContext);
+  const [error, setError] = useState(null)
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname
@@ -16,6 +17,7 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
+
     logIn(email, password)
       .then(result => {
         const loggedUser = result.user
@@ -25,6 +27,9 @@ const Login = () => {
       .catch(error => {
         const errorMessage = error.message
         console.log(errorMessage);
+        if(errorMessage){
+          setError('Wrong Password or Wrong Email')
+        }
       })
     
   };
@@ -53,6 +58,7 @@ const Login = () => {
         </div>
         <div className="mb-5">
           <button className="btn">LogIn</button>
+          <p className="text-red-800">{error}</p>
         </div>
         <div className="flex flex-col gap-2 items-center">
           <button
