@@ -10,6 +10,7 @@ const Blogs = () => {
  return (
     <div className='bg-white w-2/4 mx-auto pb-48'>
        <div className='flex justify-end mr-16 p-4'>
+        <p className='text-black mr-3'>Download PDF</p>
        <Pdf targetRef={ref} filename="download.pdf">
             {({toPdf}) => <div onClick={toPdf} className='w-6 text-white'>
                 <ArrowDownTrayIcon className='btn text-white'></ArrowDownTrayIcon>
@@ -18,7 +19,7 @@ const Blogs = () => {
        </div>
      <div ref={ref} className='text-black'>
      <h2 className='text-center text-5xl mb-8'>Blog</h2>
-        <div className='w-2/4 mx-auto'>
+        <div className='md:w-2/4 mx-auto'>
             <div className='mb-4'>
                 <h2 className='mb-3'>
                     <span className='font-bold'>1 .</span> Tell us the differences between uncontrolled and controlled components ?

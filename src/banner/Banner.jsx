@@ -23,7 +23,7 @@ const Banner = () => {
                 </p>
             </div>
             <div className='md:w-2/5 w-auto border border-4 border-blue-400'>
-                <img src="../../assets/banner/banner.jpg" alt="" srcSet="" />
+                <img src="https://i.ibb.co/28s365Y/banner.jpg" alt="" srcSet="" />
             </div>
         </div>
     );

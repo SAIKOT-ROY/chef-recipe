@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext)
+  const {createUser, update} = useContext(AuthContext)
   const [error, setError] = useState();
 
 
@@ -15,6 +15,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
+    console.log(photo);
 
     if (password.length < 6) {
       setError("Your password have to be more than six charcters");
@@ -28,7 +29,8 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const createdUser = result.user;
-        console.log(createdUser, createdDisplay);
+        update(name, photo)
+        console.log(createdUser);
       })
       .catch(error => {
         const errorMessage = error.message;

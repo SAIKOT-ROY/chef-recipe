@@ -60,6 +60,11 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        <div>
+          <p><span className="font-bold">Email :</span>  <span className="font-semibold">ichiraku@konoha.com</span></p>
+          <p><span className="font-bold">Contact :</span>  <span className="font-semibold">224-06667</span></p>
+          <p><span className="font-bold">Location :</span>  <span className="font-semibold">Tokyo, Japan</span></p>
+        </div>
       </footer>
     </div>
   );

@@ -1,69 +1,78 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { XMarkIcon, Bars3BottomLeftIcon } from '@heroicons/react/24/solid'
 
 const Navbar = () => {
-  const {logOut, user} = useContext(AuthContext)
+  const { logOut, user } = useContext(AuthContext);
+  const [tooltip, setTooltip] = useState(false);
+
+console.log(tooltip)
 
   const handleLogOut = () => {
     logOut()
-     .then()
-     .catch(error => console.log(error))
-  }
+      .then()
+      .catch((error) => console.log(error));
+  };
+
+  const tooltipOne = () => {
+    setTooltip(true);
+  };
+
+  const tooltipTwo = () => {
+    setTooltip(false);
+  };
+
+// This is navbar section 
 
   return (
     <div className="mb-28 border px-5 rounded-xl md:m-5">
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">Hakata Ramen</a>
+          <a className="btn btn-ghost normal-case text-xl mb-4 md:mb-0">Ichiraku Ramen</a>
         </div>
-        <div className="flex flex-col md:flex-row gap-4 dropdown">
-          <Link to="/">Home</Link>
-          <Link to="/register">Register</Link>
-          <Link to="/blog">Blog</Link>
-          {user && <img className="w-9 h-9 rounded-full" src="https://i.ibb.co/rHM5mh0/Chef-Shota.jpg" />}
-
-          {user ? (
-            <button onClick={handleLogOut}>
-              Logout
-            </button>
-          ) : (
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-          )}
-        </div>
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        <div className="flex mt-10 md:mt-0 flex-row md:flex-row md:flex-row gap-4">
+          <NavLink
+            to={"/"}
+            className={({ isActive }) => (isActive ? "text-fuchsia-400" : "")}
           >
-            <li>
-              <a>Homepage</a>
-            </li>
-            <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
-          </ul>
+            Home
+          </NavLink>
+          <NavLink
+            to={"/register"}
+            className={({ isActive }) => (isActive ? "text-fuchsia-400" : "")}
+          >
+            Register
+          </NavLink>
+          <NavLink
+            to={"/blog"}
+            className={({ isActive }) => (isActive ? "text-fuchsia-400" : "")}
+          >
+            Blog
+          </NavLink>
+          <div className="relative">
+            {user && (
+              <img
+                className="w-9 h-9 rounded-full tooltip"
+                src={user?.photoURL}
+                onMouseOver={tooltipOne}
+                onMouseOut={tooltipTwo}
+              />
+            )}
+          </div>
+          <p className="absolute ml-44 mb-11">
+            {tooltip == true ? <span>{user?.displayName}</span> : ""}
+          </p>
+          {user ? (
+            <button onClick={handleLogOut}>Logout</button>
+          ) : (
+            <NavLink
+              to={"/login"}
+              className={({ isActive }) => (isActive ? "text-fuchsia-400" : "")}
+            >
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
